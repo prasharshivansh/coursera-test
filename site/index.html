@@ -1,9 +1,60 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Hello Coursera</title>
+  <style>
+  body{
+    background-color: #c49225;
+  }
+  h1{
+  background-color:green;
+  border:5px solid red;
+  bordor-color:blue;
+}
+
+input{
+  font-size:20px;
+}
+  </style>
+<script>
+var image=null;
+
+function upload(){
+  var finput=document.getElementById("finput");
+
+  image= new SimpleImage(finput);
+  var imgcanvas1=document.getElementById("can1");
+  image.drawTo(imgcanvas1);
+
+}
+function makegray(){
+  for (var pixel of image.values()){
+    var avg = (pixel.getRed()+pixel.getGreen()+pixel.getBlue())/3;
+    pixel.setRed(255-pixel.getRed());
+    pixel.setGreen(255-pixel.getGreen());
+    pixel.setBlue(255-pixel.getBlue());
+  }
+var imgcanvas2=document.getElementById("can2");
+image.drawTo(imgcanvas2);
+}
+
+
+</script>
 </head>
 <body>
-<h1>Hello Coursera! it is good</h1>
+
+
+  <h1>
+    Here Comes the Snyder cut
+  </h1>
+  <script src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js" type="text/javascript"></script>
+
+  <canvas id="can1">
+
+  </canvas>
+  <canvas id="can2">
+  </canvas>
+  <p>
+  <input type="file" multiple="false"
+         accept="image/*" id="finput" onchange="upload()">
+  <input type="button" id="b1" value="makegray" onclick="makegray()">
 </body>
-</html> 
+</html>
